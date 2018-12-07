@@ -13,7 +13,7 @@
 
    ` python initial_xml.py <file> <title> `
 
-4. 修改xlsx文件
+4. 修改xlsx文件（根据标题，关键字手动设置某篇文章可见以及其他）
 
 5. 修改规则 
 
@@ -24,6 +24,21 @@
 6. 执行如下命令使修改生效，并生成摘要文稿
 
    `python change_xml.py <file>`
+
+7. 可重复执行5，6步
+
+8. 上传
+
+# 示例
+1. 从webofscience获取文本文件
+
+![fig1](image/fig1.png)
+![fig2](image/fig2.png)
+
+2. 命令行执行
+
+![fig3](image/fig3.png)
+![fig4](image/fig4.png)
 
 
 
