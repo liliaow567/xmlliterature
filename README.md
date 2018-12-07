@@ -13,9 +13,9 @@
 
    ` python initial_xml.py <file> <title> `
 
-4.修改xlsx文件
+4. 修改xlsx文件
 
-5.修改规则 
+5. 修改规则 
 
    * 排序使用大于0小于10的数
    * 不可见设为小于等于0即可
