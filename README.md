@@ -27,7 +27,7 @@
 
 7. 可重复执行5，6步
 
-8. 上传，需要上传相应的图片和lite.xml文件
+8. 上传，需要上传相应的图片和`lite.xml`文件
 
    上传网址：[http://119.23.107.86/others/fileupload.html](http://119.23.107.86/others/fileupload.html)
    
