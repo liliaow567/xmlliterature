@@ -137,7 +137,7 @@ def get_xml(result,source):
             doi = doi_list[i]
             doi = doi.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>', '&gt;').replace(
                 '<', '&lt;')
-            one = '<record prinumber="'+str(i)+'">\n\t<number>0</number>\n\t<abshow>1</abshow>\n\t<imagshow>0</imagshow>\n\t<title>' + title + '</title>\n\t<doi>' + doi + '</doi>\n\t<authors>\n'
+            one = '<record prinumber="'+str(i)+'">\n\t<number>1</number>\n\t<abshow>1</abshow>\n\t<imagshow>0</imagshow>\n\t<title>' + title + '</title>\n\t<doi>' + doi + '</doi>\n\t<authors>\n'
             for author in authors:
                 au_lab = ','.join(list(author.values())[0])
                 au_lab = au_lab.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>',
