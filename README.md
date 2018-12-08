@@ -1,11 +1,12 @@
 # 环境
 1. `python3`
 2. package: `pandas`, `requests`
+3. 建议安装 `anaconda` 并配置环境变量
 
 # 流程
 
 
-1. 准备文本文件file（从 webofscience 核心数据库，plaintext下载）
+1. 准备文本文件 `<file>`（从 webofscience 核心数据库，plaintext 下载）
 
 2. 进入命令行当前路径
 
@@ -13,7 +14,7 @@
 
    ` python initial_xml.py <file> <title> `
 
-4. 修改xlsx文件（根据标题，关键字手动设置某篇文章可见以及其他）
+4. 修改 `xlsx` 文件（根据标题，关键字手动设置某篇文章可见以及其他）
 
 5. 修改规则 
 

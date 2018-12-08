@@ -241,7 +241,7 @@ def initial(file,title):
         columns=['keyword_plus'])
     acessment = pd.concat([title, keyword, keyword_plus], axis=1)
     index = pd.DataFrame([i for i in range(len(result))], columns=['index'])
-    num = pd.DataFrame([0 for i in range(len(result))], columns=['num'])
+    num = pd.DataFrame([1 for i in range(len(result))], columns=['num'])
     ab = pd.DataFrame([1 for i in range(len(result))], columns=['ab'])
     imag = pd.DataFrame([0 for i in range(len(result))], columns=['imag'])
     imagname = pd.DataFrame(columns=['imagname', 'imagfilename'])
