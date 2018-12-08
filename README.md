@@ -27,7 +27,14 @@
 
 7. 可重复执行5，6步
 
-8. 上传
+8. 上传，需要上传相应的图片和lite.xml文件
+
+   上传网址：[http://119.23.107.86/others/fileupload.html](http://119.23.107.86/others/fileupload.html)
+   
+
+9. 结果查看
+
+   查看地址：`http://119.23.107.86/others/<yourname>/journalread.php`
 
 # 示例
 1. 从webofscience获取文本文件
@@ -39,6 +46,10 @@
 
 ![fig3](image/fig3.png)
 ![fig4](image/fig4.png)
+
+3. 结果示例
+
+	示例：[http://119.23.107.86/others/zhangsan/journalread.php](http://119.23.107.86/others/zhangsan/journalread.php)
 
 
 
