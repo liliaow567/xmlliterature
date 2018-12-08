@@ -1,6 +1,6 @@
 # 环境
 1. `python3`
-2. package: `pandas`, `requests`
+2. package: `pandas`
 3. 建议安装 `anaconda` 并配置环境变量
 
 # 流程

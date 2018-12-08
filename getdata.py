@@ -1,4 +1,4 @@
-import re, requests
+import re
 import pandas as pd
 import xml.etree.ElementTree as ET
 
@@ -74,18 +74,19 @@ def get_abs_html(abst):
         return []
 
 
-def get_img(doi):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"}
-    try:
-        html = requests.get(doi, headers=headers).text
-        art_id = re.findall(
-            "url='\/retrieve\/articleSelectSinglePerm\?Redirect=https\%3A\%2F\%2Fwww.sciencedirect.com\%2Fscience\%2Farticle\%2Fpii\%2F(.*?)\%3Fvia\%253Dihub&amp;key=.*?'",
-            html)[0]
-        src = "https://ars.els-cdn.com/content/image/1-s2.0-" + art_id + "-gr1_lrg.jpg"
-        return src
-    except:
-        return ' '
+# def get_img(doi):
+#     headers = {
+#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"}
+#     try:
+#         html = requests.get(doi, headers=headers).text
+#         art_id = re.findall(
+#             "url='\/retrieve\/articleSelectSinglePerm\?Redirect=https\%3A\%2F\%2Fwww.sciencedirect.com\%2Fscience\%2Farticle\%2Fpii\%2F(.*?)\%3Fvia\%253Dihub&amp;key=.*?'",
+#             html)[0]
+#         src = "https://ars.els-cdn.com/content/image/1-s2.0-" + art_id + "-gr1_lrg.jpg"
+#         return src
+#     except:
+#         return ' '
+
 
 
 def get_js(result):
