@@ -306,7 +306,7 @@ def change(file):
     # 生成html摘要
     numbers = marker[['index', 'num']]
     numbers = numbers[numbers.num > 0]
-    numbers = numbers.sort_values(by=['num'])
+    numbers = numbers.sort_values(by=['num'], kind='mergesort')
     order = list(numbers['index'])
     order_result = [result[i] for i in order]
     get_zaiyao(order_result)
