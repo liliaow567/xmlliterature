@@ -1,6 +1,6 @@
 *.xlsx
 *.txt
 *.xml
-*.html
+zaiyao.html
 __pycache__/
 .idea/

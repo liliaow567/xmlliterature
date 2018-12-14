@@ -1,0 +1,21 @@
+
+<head>
+<!-- 跳转 -->
+<meta id="ref" http-equiv="refresh" > 
+</head>
+
+<script  language=javascript>  
+
+var  filename=location.href;
+
+filename=filename.substr(filename.lastIndexOf('/')+1);  
+
+filename=filename.substring(0,filename.lastIndexOf("."));
+
+var obj = document.getElementById("ref");
+
+var link = "0;url=http://119.23.107.86/others/"+filename+"/journalread.php";
+
+obj.setAttribute('content',link);
+
+</script>
