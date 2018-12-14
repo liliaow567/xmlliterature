@@ -40,7 +40,7 @@
       `http://119.23.107.86/others/<yourname>/journalread.php`
 
    * 方式二：利用页面重定向
-   将`zhangsan.html` 重名名为 `<yourname>.html`
+   将`zhangsan.html` 重命名为 `<yourname>.html`
    
    * 方式三：利用方式一或方式二得到结果页面后，将页面离线保存下来即可。
 
