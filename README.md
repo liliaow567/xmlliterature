@@ -35,7 +35,12 @@
 
 9. 结果查看
 
-   查看地址：`http://119.23.107.86/others/<yourname>/journalread.php`
+   * 方式一：通过地址查看
+
+      `http://119.23.107.86/others/<yourname>/journalread.php`
+
+   * 方式二：利用页面重定向
+   将`zhangsan.html` 重名名为 `<yourname>.html`
 
 # 示例
 1. 从webofscience获取文本文件
@@ -52,5 +57,9 @@
 
 	示例：[http://119.23.107.86/others/zhangsan/journalread.php](http://119.23.107.86/others/zhangsan/journalread.php)
 
+
+# 说明
+
+相关测试皆在win10系统，Google浏览器下测试完成，屏幕分辨率为1920x1080.
 
 
