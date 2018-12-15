@@ -88,7 +88,6 @@ def get_abs_html(abst):
 #         return ' '
 
 
-
 def get_js(result):
     doi_list = [get_doi(filed_ext("DI", result[i])) for i in range(len(result))]
     pool = Pool()
@@ -119,7 +118,7 @@ def get_js(result):
         f.write(total)
 
 
-def get_xml(result,source):
+def get_xml(result, source):
     doi_list = [get_doi(filed_ext("DI", result[i])) for i in range(len(result))]
     # pool = Pool()
     # src_list = pool.map(get_img, doi_list)
@@ -127,7 +126,8 @@ def get_xml(result,source):
     with open("lite.xml", 'w') as f:
         total = ""
         total += '<?xml version="1.0" encoding="UTF-8"?>\n'
-        total += '<journal>\n<journalvolume>{}</journalvolume>\n'.format(source)
+        # total += '<journal>\n<journalvolume>{}</journalvolume>\n'.format(source)
+        total += '<journal>\n'
         for i in range(len(result)):
             title = get_title(filed_ext("TI", result[i]))
             title = title.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>',
@@ -138,7 +138,8 @@ def get_xml(result,source):
             doi = doi_list[i]
             doi = doi.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>', '&gt;').replace(
                 '<', '&lt;')
-            one = '<record prinumber="'+str(i)+'">\n\t<number>1</number>\n\t<abshow>1</abshow>\n\t<imagshow>0</imagshow>\n\t<title>' + title + '</title>\n\t<doi>' + doi + '</doi>\n\t<authors>\n'
+            one = '<record prinumber="' + str(
+                i) + '">\n\t<number>1</number>\n\t<abshow>1</abshow>\n\t<imagshow>0</imagshow>\n\t<title>' + title + '</title>\n\t<doi>' + doi + '</doi>\n\t<authors>\n'
             for author in authors:
                 au_lab = ','.join(list(author.values())[0])
                 au_lab = au_lab.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>',
@@ -171,7 +172,8 @@ def get_xml(result,source):
                 one_ab = '\t\t<abstract>\n\t\t<abstractmark><mark>nomark</mark><content>{}</content></abstractmark>\n\t\t</abstract>\n'.format(
                     abstract)
                 one += one_ab
-            one += '\t</abstracts>\n\t<pics>\n\t\t<pic><iname>myimage</iname><isrc>dataimage/touxiang.jpg</isrc><width>20%</width></pic>\n\t</pics>\n</record>\n'
+            one += '\t</abstracts>\n\t<pics>\n\t\t<pic><iname>myimage</iname><isrc>dataimage/touxiang.jpg</isrc><width>20%</width></pic>\n\t</pics>\n<journalvolume>{}</journalvolume>\n</record>\n'.format(
+                source)
             total += one
         total += '</journal>'
         f.write(total)
@@ -220,7 +222,8 @@ def get_zaiyao(result):
         f.write('</body>\n')
         f.write('</html>\n')
 
-def initial(file,title):
+
+def initial(file, title):
     """
     得到初始的lite.xml和acess.xlsx文件
     :param file:
@@ -251,6 +254,7 @@ def initial(file,title):
     acessment.to_excel(writer, 'acessment')
     marker.to_excel(writer, 'marker', index=False)
     writer.save()
+
 
 def change(file):
     """
@@ -310,16 +314,3 @@ def change(file):
     order = list(numbers['index'])
     order_result = [result[i] for i in order]
     get_zaiyao(order_result)
-
-
-
-
-
-
-
-
-
-
-
-
-
