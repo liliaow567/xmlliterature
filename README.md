@@ -12,7 +12,7 @@
 
 3. 执行如下命令初始化`lite.xml`, 以及`xlsx` 文件
 
-   ` python initial_xml.py <file> <title> `
+   ` python initial_xml.py <file>`
 
 4. 修改 `xlsx` 文件（根据标题，关键字手动设置某篇文章可见以及其他）
 
@@ -51,6 +51,7 @@
 ![fig2](image/fig2.png)
 
 2. 命令行执行
+
 
 ![fig3](image/fig3.png)
 ![fig4](image/fig4.png)

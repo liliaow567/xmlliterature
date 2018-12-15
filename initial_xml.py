@@ -3,8 +3,7 @@ import sys
 
 def main(argv):
     file = argv[0]
-    title = argv[1]
-    gt.initial(file,title)
+    gt.initial(file)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

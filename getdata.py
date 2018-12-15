@@ -24,6 +24,12 @@ def filed_ext(filed, record):
     else:
         return ' '
 
+def get_source(record):
+    so = filed_ext('SO',record)
+    so = so.title().rstrip('\n')
+    vl = filed_ext('VL',record).rstrip('\n')
+
+    return '{} VL {}'.format(so, vl)
 
 def get_title(ti):
     return ti.replace('\n', '').replace('   ', ' ')
@@ -88,37 +94,37 @@ def get_abs_html(abst):
 #         return ' '
 
 
-def get_js(result):
-    doi_list = [get_doi(filed_ext("DI", result[i])) for i in range(len(result))]
-    pool = Pool()
-    src_list = pool.map(get_img, doi_list)
-    # src_list = [get_img(doi_list[i]) for i in range(len(result))]
+# def get_js(result):
+#     doi_list = [get_doi(filed_ext("DI", result[i])) for i in range(len(result))]
+#     pool = Pool()
+#     src_list = pool.map(get_img, doi_list)
+#     # src_list = [get_img(doi_list[i]) for i in range(len(result))]
+#
+#     with open("lite.js", 'w') as f:
+#         total = ""
+#         total += 'var data = [\n'
+#         for i in range(len(result)):
+#             title = get_title(filed_ext("TI", result[i]))
+#             authors, affiliations = get_author(filed_ext('C1', result[i]), filed_ext('AF', result[i]))
+#             abstracts = get_abs_html(filed_ext("AB", result[i]))
+#             doi = doi_list[i]
+#             if i == 0:
+#                 one = '{\n"title":"' + title + '",\n"authors":' + str(authors) + ',\n"affiliations":' + str(
+#                     affiliations) + ',\n"abstract":' + str(abstracts) + ',\n"img":[\n{"src":"' + str(
+#                     src_list[i]) + '","desc":"FIND THAT","width":400}],\n"article-link":"' + str(
+#                     doi) + '"}'
+#             else:
+#                 one = ',\n{\n"title":"' + title + '",\n"authors":' + str(authors) + ',\n"affiliations":' + str(
+#                     affiliations) + ',\n"abstract":' + str(abstracts) + ',\n"img":[\n{"src":"' + str(
+#                     src_list[i]) + '","desc":"FIND THAT","width":400}],\n"article-link":"' + str(
+#                     doi) + '"}'
+#
+#             total += one
+#         total += '\n];'
+#         f.write(total)
 
-    with open("lite.js", 'w') as f:
-        total = ""
-        total += 'var data = [\n'
-        for i in range(len(result)):
-            title = get_title(filed_ext("TI", result[i]))
-            authors, affiliations = get_author(filed_ext('C1', result[i]), filed_ext('AF', result[i]))
-            abstracts = get_abs_html(filed_ext("AB", result[i]))
-            doi = doi_list[i]
-            if i == 0:
-                one = '{\n"title":"' + title + '",\n"authors":' + str(authors) + ',\n"affiliations":' + str(
-                    affiliations) + ',\n"abstract":' + str(abstracts) + ',\n"img":[\n{"src":"' + str(
-                    src_list[i]) + '","desc":"FIND THAT","width":400}],\n"article-link":"' + str(
-                    doi) + '"}'
-            else:
-                one = ',\n{\n"title":"' + title + '",\n"authors":' + str(authors) + ',\n"affiliations":' + str(
-                    affiliations) + ',\n"abstract":' + str(abstracts) + ',\n"img":[\n{"src":"' + str(
-                    src_list[i]) + '","desc":"FIND THAT","width":400}],\n"article-link":"' + str(
-                    doi) + '"}'
 
-            total += one
-        total += '\n];'
-        f.write(total)
-
-
-def get_xml(result, source):
+def get_xml(result):
     doi_list = [get_doi(filed_ext("DI", result[i])) for i in range(len(result))]
     # pool = Pool()
     # src_list = pool.map(get_img, doi_list)
@@ -130,7 +136,11 @@ def get_xml(result, source):
         total += '<journal>\n'
         for i in range(len(result)):
             title = get_title(filed_ext("TI", result[i]))
+            source = get_source(result[i])
             title = title.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>',
+                                                                                                      '&gt;').replace(
+                '<', '&lt;')
+            source = source.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&apos;').replace('>',
                                                                                                       '&gt;').replace(
                 '<', '&lt;')
             authors, affiliations = get_author(filed_ext('C1', result[i]), filed_ext('AF', result[i]))
@@ -223,7 +233,7 @@ def get_zaiyao(result):
         f.write('</html>\n')
 
 
-def initial(file, title):
+def initial(file):
     """
     得到初始的lite.xml和acess.xlsx文件
     :param file:
@@ -234,7 +244,7 @@ def initial(file, title):
 
     result = record_ext(content)
 
-    get_xml(result, title)
+    get_xml(result)
 
     keyword = pd.DataFrame(
         [filed_ext('DE', result[i]).replace('\n', '').replace('   ', ' ') for i in range(len(result))],
@@ -314,3 +324,10 @@ def change(file):
     order = list(numbers['index'])
     order_result = [result[i] for i in order]
     get_zaiyao(order_result)
+
+if __name__ == '__main__':
+    with open('eb179.txt','r', encoding='utf-8') as f:
+        cont = f.read()
+    result = record_ext(cont)
+    for i in range(5):
+        print(get_source(result[i]))
