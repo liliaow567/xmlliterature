@@ -325,9 +325,9 @@ def change(file):
     order_result = [result[i] for i in order]
     get_zaiyao(order_result)
 
-if __name__ == '__main__':
-    with open('eb179.txt','r', encoding='utf-8') as f:
-        cont = f.read()
-    result = record_ext(cont)
-    for i in range(5):
-        print(get_source(result[i]))
+# if __name__ == '__main__':
+#     with open('eb179.txt','r', encoding='utf-8') as f:
+#         cont = f.read()
+#     result = record_ext(cont)
+#     for i in range(5):
+#         print(get_source(result[i]))
